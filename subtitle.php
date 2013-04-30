@@ -26,15 +26,6 @@ public function init() {
 	$this->meta_key = apply_filters( 'nskw-fat-meta_key', $this->meta_key );
 	$this->post_type = apply_filters( 'nskw-fat_post_type', $this->post_type );
 	$this->meta_label = apply_filters( 'nskw-fat-meta_label', $this->meta_label );
-	$this->post_id = '';
-	if ( isset($_GET['post']) ) {
-		$this->post_id = $_GET['post'];
-	} else {
-		global $post;
-		if ( !empty($post) ) {
-			$this->post_id = $post->ID;
-		}
-	}
 }
 
 // フォームの表示
@@ -92,4 +83,3 @@ function get_nskw_subtitle() {
 function nskw_subtitle() {
 	echo get_nskw_subtitle();
 }
-
