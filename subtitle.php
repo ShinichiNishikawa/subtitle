@@ -55,14 +55,23 @@ public function save_post( $post_id )
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
-	if ( ! current_user_can( 'edit_post', $post_id ) ) {
-		return;
+	// Check the user's permissions.
+	if ( 'page' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_page', $post_id ) )
+			return $post_id;
+
+	} else {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+			return $post_id;
 	}
-    
-    if ( isset ( $_POST[ $this->meta_key ] ) ) {
-    	return update_post_meta( $post_id, $this->meta_key, $_POST[ $this->meta_key ] );
-    }
-    delete_post_meta( $post_id, $this->meta_key );
+
+	if ( isset ( $_POST[ $this->meta_key ] ) ) {
+		return update_post_meta( $post_id, $this->meta_key, $_POST[ $this->meta_key ] );
+	}
+
+	delete_post_meta( $post_id, $this->meta_key );
 
 }
 
