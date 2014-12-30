@@ -50,7 +50,7 @@ function nskw_hide_subtitle() {
 == Screenshots ==
 
 1. Subtitle input field appears!
-
+fadhfjlnaldnfa
 == Changelog ==
 
 0.1 First Release.
